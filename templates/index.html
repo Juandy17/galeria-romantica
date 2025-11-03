@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="galeria">
+    {% for recuerdo in recuerdos %}
+    <div class="tarjeta">
+        {% if recuerdo.tipo == 'imagen' %}
+            <img src="{{ url_for('static', filename=recuerdo.archivo) }}" alt="Imagen de recuerdo">
+        {% elif recuerdo.tipo == 'video' %}
+            <video controls>
+                <source src="{{ url_for('static', filename=recuerdo.archivo) }}" type="video/mp4">
+                Tu navegador no soporta el formato de video.
+            </video>
+        {% endif %}
+        <h2>{{ recuerdo.titulo }}</h2>
+        <p>{{ recuerdo.descripcion }}</p>
+        <p class="frase-final">¿Seguimos escribiendo esta historia? 💞</p>
+        <span class="fecha">{{ recuerdo.fecha.strftime('%d/%m/%Y') }}</span>
+    </div>
+    {% else %}
+    <p class="no-recuerdos">Aún no hay recuerdos... crea el primero 💌</p>
+    {% endfor %}
+</section>
+{% endblock %}
+

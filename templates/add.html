@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="formulario">
+    <h2>Agregar un nuevo recuerdo ✨</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Título</label>
+        <input type="text" name="titulo" required>
+
+        <label>Descripción</label>
+        <textarea name="descripcion" rows="4" required></textarea>
+
+        <label>Imagen o video (opcional)</label>
+        <input type="file" name="archivo" accept="image/*,video/*">
+
+        <button type="submit">Guardar Recuerdo 💌</button>
+    </form>
+</div>
+{% endblock %}
