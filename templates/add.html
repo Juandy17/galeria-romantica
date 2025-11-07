@@ -1,18 +1,29 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="formulario">
-    <h2>Agregar un nuevo recuerdo ✨</h2>
-    <form method="POST" enctype="multipart/form-data">
-        <label>Título</label>
-        <input type="text" name="titulo" required>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Recuerdo 💌</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="formulario-contenedor">
+        <h1>💞 Agregar un nuevo recuerdo</h1>
+        <form action="{{ url_for('agregar') }}" method="POST" enctype="multipart/form-data">
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" required>
 
-        <label>Descripción</label>
-        <textarea name="descripcion" rows="4" required></textarea>
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" rows="4" required></textarea>
 
-        <label>Imagen o video (opcional)</label>
-        <input type="file" name="archivo" accept="image/*,video/*">
+            <label for="archivo">Archivo (imagen o video):</label>
+            <input type="file" name="archivo" accept="image/*,video/*">
 
-        <button type="submit">Guardar Recuerdo 💌</button>
-    </form>
-</div>
-{% endblock %}
+            <button type="submit" class="boton-agregar">💌 Guardar Recuerdo</button>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="volver">⬅ Volver a la galería</a>
+    </div>
+</body>
+</html>
+
